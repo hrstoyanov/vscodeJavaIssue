@@ -1,2 +1,4 @@
-Sample code for this issue:
-https://github.com/oracle/javavscode/issues/23
+Sample code for [this issue](https://github.com/oracle/javavscode/issues/23). 
+
+To build:
+> ./gradelw clean assemble
