@@ -1,4 +1,4 @@
 Sample code for [this issue](https://github.com/oracle/javavscode/issues/23). 
 
 To build:
-> ./gradelw clean assemble
+> ./gradlew clean assemble
