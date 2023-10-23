@@ -1,0 +1,50 @@
+plugins {
+    id 'com.peruncs.java-application-conventions'
+}
+
+
+dependencies {
+
+    implementation project(':webtemplates')
+
+
+
+    //Helidon dependencies
+    implementation platform("io.helidon:helidon-dependencies:${helidonVersion}")// import Helidon BOM
+    implementation 'io.helidon.webserver:helidon-webserver'
+    implementation 'io.helidon.http:helidon-http-http2'
+//    implementation 'io.helidon.http2:helidon-http2-webclient'
+
+    implementation 'io.helidon.webserver:helidon-webserver-static-content'
+    implementation 'io.helidon.common:helidon-common-media-type'
+
+    implementation 'io.helidon.config:helidon-config-yaml'
+
+    //implementation 'jakarta.json:jakarta.json-api'
+    //implementation 'io.helidon.nima.http.media:helidon-nima-http-media-jsonp'
+    //implementation 'io.helidon.nima.observe:helidon-nima-observe-health'
+    //implementation 'io.helidon.health:helidon-health-checks'
+
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine'
+    testImplementation 'io.helidon.webserver.testing.junit5:helidon-webserver-testing-junit5'
+    testImplementation 'io.helidon.webclient:helidon-webclient'
+    testImplementation 'org.hamcrest:hamcrest-all'
+
+
+    //MicroStream dependencies
+    implementation "io.helidon.integrations.microstream:helidon-integrations-microstream:${helidonVersion}"
+    implementation ("one.microstream:microstream-storage-embedded") version {  strictly "${microstreamVersion}" }
+    implementation ("one.microstream:microstream-storage-embedded-configuration") version {  strictly "${microstreamVersion}" }
+    implementation ("one.microstream:microstream-configuration") version {  strictly "${microstreamVersion}" }
+    implementation "one.microstream:microstream-persistence-binary-jdk17:${microstreamVersion}"
+
+//    implementation "io.helidon.integrations.microstream:helidon-integrations-microstream-health:${microstreamVersion}"
+//    implementation "io.helidon.integrations.microstream:helidon-integrations-microstream-metrics:${microstreamVersion}"
+//    implementation "io.helidon.integrations.microstream:helidon-integrations-microstream-cache:${microstreamVersion}"
+
+}
+
+application {
+    mainModule = 'com.peruncs.pcml.webapp'
+    mainClass = 'com.peruncs.pcml.webapp.Main'
+}

@@ -1,0 +1,10 @@
+plugins {
+    id 'com.peruncs.java-library-conventions'
+}
+
+dependencies {
+    api "io.jstach:jstachio:${jstachioVersion}"
+    api "io.jstach:jstachio-annotation:${jstachioVersion}"
+    annotationProcessor "io.jstach:jstachio-apt:${jstachioVersion}"
+    annotationProcessor fileTree(layout.projectDirectory.dir('src/main/resources/templates')) { include '**/*' }
+}

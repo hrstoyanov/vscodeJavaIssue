@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <script crossorigin="anonymous"  src="https://unpkg.com/htmx.org@1.9.6"></script>
+    <script crossorigin="anonymous" src="https://unpkg.com/hyperscript.org@0.9.11"></script>
+    <link href="web-assets/app.css" rel="stylesheet">
+    <title>PCML</title>
+</head>
+<body>
+{{#user}}
+<p>Hello {{name}}</p>
+{{#loginHistory}}
+{{#-first}}
+<ul>{{/-first}}
+    <li>Login date: {{.}}</li>
+    {{#-last}}
+</ul>
+{{/-last}}
+{{/loginHistory}}
+{{/user}}
+
+</body>
+</html>

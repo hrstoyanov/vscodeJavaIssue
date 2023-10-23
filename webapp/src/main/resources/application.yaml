@@ -1,0 +1,12 @@
+server:
+  port: 8080
+
+
+#cache:
+#  microstream:
+#    missing_cache_strategy: create
+#    readThrough: true
+#    writeThrough: true
+#    storage:
+#      baseDirectory: ~/cache-data
+#      channelCount: 4

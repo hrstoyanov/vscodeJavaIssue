@@ -1,0 +1,53 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation "org.junit.jupiter:junit-jupiter:${junitVersion}"
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+group = 'com.peruncs.pcml'
+version = "${pcmlVersion}"
+
+// Make sure we use the right java flags
+def javaVersion = JavaVersion.VERSION_20
+
+tasks
+        .withType(JavaCompile)
+        .configureEach {
+            java {
+                sourceCompatibility = javaVersion
+                targetCompatibility = javaVersion
+                options.incremental = true
+                options.encoding = 'UTF-8'
+                options.compilerArgs += ["-Xlint:all",
+                                         "-Xlint:-unchecked",
+                                         "-Xlint:-preview",
+                                         "--enable-preview"]
+            }
+
+        }
+
+tasks
+        .withType(JavaExec)
+        .configureEach {
+            java {
+                jvmArgs += ["--enable-preview"]
+                sourceCompatibility = javaVersion
+            }
+        }
+
+tasks
+        .withType(Test)
+        .configureEach {
+            useJUnitPlatform()
+            java {
+                jvmArgs += ["--enable-preview"/*, "-Xmx4g"*/]
+                sourceCompatibility = javaVersion
+            }
+        }
